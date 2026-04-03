@@ -111,10 +111,29 @@ having Count(Orders.CustomerID) >1
 
 -- 8. Calculate total spending (SUM of TotalAmount) for each customer
 
+select Customers.FirstName , sum(Orders.TotalAmount) as Total_amount 
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName
+
 
 -- 9. Show the highest spending customer
+select top 1 Customers.FirstName , sum(Orders.TotalAmount) as total_spend
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName
+order by total_spend desc
 
 -- 10. Find total sales per category
+
+select Orders.Category , sum(Orders.TotalAmount) as total_spend
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Orders.Category
+
 
 -- 11. Show all orders that are not delivered
 
