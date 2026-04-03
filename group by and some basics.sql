@@ -13,19 +13,45 @@ CREATE TABLE Employees (
     Age INT,
     Email VARCHAR(100)
 );
+INSERT INTO Employees (FirstName, LastName, Department, Salary, City, HireDate, Age, Email) VALUES
+('Adnan', 'Rafiq', 'IT', 93000, 'Islamabad', '2021-02-11', 29, 'adnan.rafiq@gmail.com'),
+('Sadia', 'Naeem', 'HR', 61000, 'Lahore', '2020-06-19', 27, 'sadia.naeem@yahoo.com'),
+('Waqas', 'Mirza', 'Finance', 87000, 'Karachi', '2019-08-14', 34, 'waqas.mirza@gmail.com'),
+('Komal', 'Arif', 'Marketing', 52000, 'Islamabad', '2022-03-22', 24, 'komal.arif@hotmail.com'),
+('Rizwan', 'Latif', 'IT', 89000, 'Lahore', '2018-11-03', 33, 'rizwan.latif@gmail.com'),
+('Farah', 'Jamil', 'HR', 66000, 'Karachi', '2021-05-17', 28, 'farah.jamil@yahoo.com'),
+('Yasir', 'Butt', 'Finance', 91000, 'Islamabad', '2020-09-29', 31, 'yasir.butt@gmail.com'),
+('Hafsa', 'Saleem', 'Marketing', 55000, 'Lahore', '2023-01-05', 23, 'hafsa.saleem@gmail.com'),
+('Talha', 'Amin', 'IT', 97000, 'Karachi', '2017-07-12', 36, 'talha.amin@gmail.com'),
+('Bushra', 'Khalil', 'HR', 64000, 'Islamabad', '2019-12-21', 30, 'bushra.khalil@yahoo.com'),
 
-INSERT INTO Employees (FirstName, LastName, Department, Salary, City, HireDate, Age, Email)
-VALUES
-('Ali', 'Khan', 'IT', 80000, 'Islamabad', '2020-05-10', 26, 'ali.khan@gmail.com'),
-('Sara', 'Ahmed', 'HR', 60000, 'Lahore', '2019-03-15', 28, 'sara.ahmed@yahoo.com'),
-('Usman', 'Raza', 'Finance', 90000, 'Karachi', '2021-07-20', 30, 'usman.raza@gmail.com'),
-('Ayesha', 'Malik', 'IT', 75000, 'Islamabad', '2022-01-10', 25, 'ayesha.malik@hotmail.com'),
-('Hamza', 'Ali', 'Marketing', 50000, 'Lahore', '2018-11-25', 32, 'hamza.ali@gmail.com'),
-('Zain', 'Sheikh', 'IT', 95000, 'Karachi', '2020-09-05', 29, 'zain.sheikh@gmail.com'),
-('Hina', 'Iqbal', 'HR', 65000, 'Islamabad', '2021-12-12', 27, 'hina.iqbal@yahoo.com'),
-('Bilal', 'Tariq', 'Finance', 70000, 'Lahore', '2019-06-30', 31, 'bilal.tariq@gmail.com'),
-('Mariam', 'Noor', 'Marketing', 55000, 'Karachi', '2023-02-14', 24, 'mariam.noor@gmail.com'),
-('Omar', 'Farooq', 'IT', 88000, 'Islamabad', '2017-08-19', 35, 'omar.farooq@gmail.com');
+('Nabeel', 'Hashmi', 'Finance', 86000, 'Lahore', '2022-04-10', 27, 'nabeel.hashmi@gmail.com'),
+('Areeba', 'Saeed', 'Marketing', 53000, 'Karachi', '2021-10-02', 25, 'areeba.saeed@hotmail.com'),
+('Kamran', 'Yousuf', 'IT', 92000, 'Islamabad', '2020-03-28', 32, 'kamran.yousuf@gmail.com'),
+('Tehmina', 'Qadir', 'HR', 60000, 'Lahore', '2018-09-13', 34, 'tehmina.qadir@yahoo.com'),
+('Faisal', 'Rehman', 'Finance', 94000, 'Karachi', '2019-01-30', 35, 'faisal.rehman@gmail.com'),
+('Laiba', 'Imtiaz', 'Marketing', 56000, 'Islamabad', '2023-02-08', 22, 'laiba.imtiaz@gmail.com'),
+('Shahid', 'Raza', 'IT', 88000, 'Lahore', '2021-06-14', 30, 'shahid.raza@gmail.com'),
+('Nida', 'Akhtar', 'HR', 67000, 'Karachi', '2020-11-19', 28, 'nida.akhtar@yahoo.com'),
+('Junaid', 'Iqbal', 'Finance', 90000, 'Islamabad', '2017-05-25', 37, 'junaid.iqbal@gmail.com'),
+('Amna', 'Latif', 'Marketing', 54000, 'Lahore', '2022-08-16', 24, 'amna.latif@hotmail.com'),
+
+('Salman', 'Khan', 'IT', 96000, 'Karachi', '2018-02-07', 35, 'salman.khan@gmail.com'),
+('Hira', 'Majeed', 'HR', 62000, 'Islamabad', '2021-09-09', 26, 'hira.majeed@yahoo.com'),
+('Asad', 'Zubair', 'Finance', 85000, 'Lahore', '2020-07-01', 31, 'asad.zubair@gmail.com'),
+('Iqbal', 'Shah', 'Marketing', 51000, 'Karachi', '2019-03-18', 33, 'iqbal.shah@hotmail.com'),
+('Bilqees', 'Anwar', 'IT', 91000, 'Islamabad', '2022-05-27', 28, 'bilqees.anwar@gmail.com'),
+('Zeeshan', 'Rashid', 'HR', 68000, 'Lahore', '2017-12-12', 38, 'zeeshan.rashid@yahoo.com'),
+('Adeel', 'Sultan', 'Finance', 93000, 'Karachi', '2019-10-05', 34, 'adeel.sultan@gmail.com'),
+('Maham', 'Fahad', 'Marketing', 57000, 'Islamabad', '2023-03-12', 23, 'maham.fahad@gmail.com'),
+('Farhan', 'Ali', 'IT', 87000, 'Lahore', '2021-01-21', 29, 'farhan.ali@gmail.com'),
+('Sumbal', 'Riaz', 'HR', 65000, 'Karachi', '2020-04-30', 27, 'sumbal.riaz@yahoo.com'),
+
+('Usaid', 'Kareem', 'Finance', 92000, 'Islamabad', '2018-06-06', 36, 'usaid.kareem@gmail.com'),
+('Alina', 'Noor', 'Marketing', 55000, 'Lahore', '2022-12-25', 24, 'alina.noor@hotmail.com'),
+('Shayan', 'Tariq', 'IT', 98000, 'Karachi', '2017-03-15', 39, 'shayan.tariq@gmail.com'),
+('Rimsha', 'Hassan', 'HR', 63000, 'Islamabad', '2021-07-07', 26, 'rimsha.hassan@yahoo.com'),
+('Dawood', 'Aziz', 'Finance', 89000, 'Lahore', '2020-10-10', 32, 'dawood.aziz@gmail.com');
 
 
 --Get all employees from Islamabad
