@@ -48,3 +48,93 @@ VALUES
 (2, '2025-03-10', 'Bag', 'Accessories', 1, 4000, 4000, 'Delivered');
 
 select * from Customers
+
+-- 1. Get all customers with their orders (show customer full name, product name, and order status)
+    
+    select Customers.FirstName +'' +Customers.LastName as fullName ,
+    Orders.ProductName,  Orders.Status
+    from Customers
+    inner join  Orders 
+    on Customers.CustomerID = Orders.CustomerID
+
+-- 2. Show customers who have never placed an order
+select * from Customers
+left join Orders
+on Customers.CustomerID = Orders.CustomerID
+where Orders.CustomerID is Null
+
+
+-- 3. List all orders with customer full name and city
+
+
+    select Customers.FirstName +'' +Customers.LastName as fullName ,
+    Customers.City
+    from Orders
+    left join  Customers 
+    on Orders.CustomerID = Customers.CustomerID
+
+-- 4. Find all customers from Lahore who have placed orders
+
+select Customers.FirstName +'' +Customers.LastName as fullName ,
+    Customers.City,Orders.ProductName,  Orders.Status  from Customers
+left join Orders
+on Customers.CustomerID = Orders.CustomerID
+where Customers.City= 'Lahore' and Orders.CustomerID is not NUll
+
+-- 5. Show all orders where product name contains the letter 'o'
+
+select Orders.ProductName , Orders.Price ,Customers.City 
+,Customers.FirstName +'' +Customers.LastName as fullName 
+from Orders 
+left Join Customers
+on Orders.CustomerID = Customers.CustomerID
+where Orders.ProductName like '%o%' and Customers.CustomerID is not null
+
+-- 6. Get total number of orders per customer
+
+select Customers.FirstName , count(Orders.CustomerID) as noOFOrders
+from Orders 
+inner join Customers
+on Orders.CustomerID = Customers.CustomerID
+group by Customers.FirstName
+
+ 
+
+-- 7. Show customers who have placed more than 1 order
+
+select Customers.FirstName , Count(Orders.CustomerID) as noOfOrders 
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName
+having Count(Orders.CustomerID) >1
+
+-- 8. Calculate total spending (SUM of TotalAmount) for each customer
+
+
+-- 9. Show the highest spending customer
+
+-- 10. Find total sales per category
+
+-- 11. Show all orders that are not delivered
+
+-- 12. Find customers who placed orders in March 2025
+
+-- 13. Find customers whose total spending is greater than average spending
+
+-- 14. Get the most ordered product (by total quantity)
+
+-- 15. Show each customer with:
+--     total number of orders,
+--     total spending,
+--     average order value
+
+-- 16. Find customers who only placed Delivered orders (no Pending or Cancelled orders)
+
+-- 17. Get the second highest order amount
+
+-- 18. Find customers who ordered from more than 1 category
+
+-- 19. Show the latest order of each customer
+
+-- 20. Rank customers based on total spending (use RANK() if supported)
