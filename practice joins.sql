@@ -43,9 +43,11 @@ VALUES
 (1, '2025-01-10', 'Laptop', 'Electronics', 1, 120000, 120000, 'Delivered'),
 (1, '2025-02-15', 'Mouse', 'Electronics', 2, 1500, 3000, 'Shipped'),
 (2, '2025-03-01', 'Dress', 'Clothing', 3, 2500, 7500, 'Pending'),
+(2, '2025-03-01', 'Dress', 'Clothing', 3, 2500, 7500, 'Pending'),
 (3, '2025-01-20', 'Phone', 'Electronics', 1, 80000, 80000, 'Delivered'),
 (4, '2025-02-25', 'Shoes', 'Footwear', 2, 5000, 10000, 'Cancelled'),
 (2, '2025-03-10', 'Bag', 'Accessories', 1, 4000, 4000, 'Delivered');
+
 
 select * from Customers
 
@@ -137,11 +139,29 @@ group by Orders.Category
 
 -- 11. Show all orders that are not delivered
 
+select Customers.FirstName +''+Customers.LastName as fullName ,
+Orders.ProductName ,Orders.Status 
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+where Orders.Status != 'Delivered'
+
 -- 12. Find customers who placed orders in March 2025
+select Customers.FirstName ,Orders.ProductName ,Orders.OrderDate
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+where Orders.OrderDate like '2025-03-%'
 
 -- 13. Find customers whose total spending is greater than average spending
 
+
 -- 14. Get the most ordered product (by total quantity)
+select Orders.ProductName ,Orders.Price ,sum(Orders.Quantity) as noOfOrders
+from Orders
+inner join Customers
+on Orders.CustomerID = Customers.CustomerID
+group by Orders.ProductName ,Orders.Price
 
 -- 15. Show each customer with:
 --     total number of orders,
