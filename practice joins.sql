@@ -154,6 +154,13 @@ on Customers.CustomerID = Orders.CustomerID
 where Orders.OrderDate like '2025-03-%'
 
 -- 13. Find customers whose total spending is greater than average spending
+select Customers.FirstName,Customers.CustomerID , 
+sum(Orders.Price * Orders.Quantity) as total_spending
+from Orders 
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName ,Customers.CustomerID
+having sum(Orders.Price * Orders.Quantity) > avg(Orders.Price * Orders.Quantity)
 
 
 -- 14. Get the most ordered product (by total quantity)
@@ -168,12 +175,54 @@ group by Orders.ProductName ,Orders.Price
 --     total spending,
 --     average order value
 
+select Customers.FirstName ,count(Orders.CustomerID) as noOFOrders, 
+sum(Orders.Quantity * Orders.Price) as TotoalSpending,
+avg(Orders.Price) as averageValue
+from 
+Orders inner join
+Customers on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName
+
 -- 16. Find customers who only placed Delivered orders (no Pending or Cancelled orders)
+
+select Customers.FirstName , Orders.Status
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+where Orders.Status = 'Delivered'
 
 -- 17. Get the second highest order amount
 
--- 18. Find customers who ordered from more than 1 category
+select Orders.ProductName , Orders.Quantity * Orders.Price as order_amount
+from Orders inner join 
+Customers  on Customers.CustomerID = Orders.CustomerID
+order by order_amount desc
+offset 1 rows
+fetch next 1 row only
 
--- 19. Show the latest order of each customer
+
+
+-- 18. Find customers who ordered from more than 1 category
+select Customers.FirstName , count(Orders.Category) as categoryOrders
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName
+having count(Orders.Category) >1
+
+-- 19.show orders sort by date latest
+select   Customers.FirstName ,Orders.ProductName ,max(Orders.OrderDate) as Latest
+from Orders 
+inner join Customers
+on Customers.CustomerID=  Orders.CustomerID
+group by Customers.FirstName , Orders.ProductName
+order by Latest desc
+
 
 -- 20. Rank customers based on total spending (use RANK() if supported)
+select Customers.FirstName , sum(Orders.Price * Orders.Quantity) as Total_spending,
+Rank() over ( order by sum(Orders.Price * Orders.Quantity) desc) as Rank_Orders
+from Orders
+inner join Customers
+on Customers.CustomerID = Orders.CustomerID
+group by Customers.FirstName
