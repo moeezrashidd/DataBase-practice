@@ -45,44 +45,33 @@ INSERT INTO Projects (ProjectName, DepartmentID) VALUES
 ('Budget Analysis', 3),
 ('Ad Campaign', 4);
 
+
 -- 1. Find employees whose salary is greater than the average salary of all employees.
 
 -- 2. Find employees who earn more than the average salary of their own department.
--- (Correlated subquery)
 
 -- 3. List employees who are working on at least one project.
--- (Use EXISTS)
 
 -- 4. List employees who are NOT assigned to any project.
--- (Use NOT EXISTS)
 
--- 5. Find employees whose salary is greater than ALL employees in HR department.
--- (Use ALL)
+-- 5. Find employees whose salary is greater than employees in HR department.
 
 -- 6. Find employees who work in the same department as 'Ali'.
--- (Use subquery)
 
 -- 7. Display each employee's name along with their department name.
--- (Use subquery in SELECT instead of JOIN)
 
 -- 8. Find the department(s) that have more than 2 employees.
--- (Use subquery with GROUP BY)
 
--- 9. Find employees who are managers (i.e., their EmpID appears as ManagerID for others).
+-- 9. Find employees who are managers.
 
 -- 10. Find the second highest salary in the Employees table.
--- (Do NOT use TOP or LIMIT directly — use subquery)
 
 -- 11. Find employees whose salary is equal to the maximum salary in their department.
--- (Correlated subquery)
 
 -- 12. Find the employee(s) who worked the maximum number of hours on any project.
 
 -- 13. Find departments that do NOT have any employees.
--- (Use NOT EXISTS)
 
 -- 14. Find employees hired after the most recently hired employee in HR department.
 
--- 15. Find employees who earn more than the average salary of employees 
--- who are working on at least one project.
--- (Nested subquery + EXISTS)
+-- 15. Find employees who earn more than the average salary of employees who are working on at least one project.
