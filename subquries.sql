@@ -42,8 +42,28 @@ INSERT INTO Employees (Name, DepartmentID, Salary, ManagerID, HireDate) VALUES
 INSERT INTO Projects (ProjectName, DepartmentID) VALUES
 ('Website', 1),
 ('Recruitment System', 2),
+('Recruitment System', 2),
+('Recruitment System', 2),
+('Recruitment System', 2),
+('Recruitment System', 2),
+('Recruitment System', 2),
+('Budget Analysis', 3),
+('Budget Analysis', 3),
+('Budget Analysis', 3),
+('Budget Analysis', 3),
+('Budget Analysis', 3),
 ('Budget Analysis', 3),
 ('Ad Campaign', 4);
+('Ad Campaign', 4);
+('Ad Campaign', 4);
+('Ad Campaign', 4);
+('Ad Campaign', 4);
+('Ad Campaign', 4);
+
+
+
+
+
 
 
 -- 1. Find employees whose salary is greater than the average salary of all employees.
