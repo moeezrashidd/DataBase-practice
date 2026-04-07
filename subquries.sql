@@ -28,6 +28,13 @@ INSERT INTO Departments (DepartmentName) VALUES
 ('Finance'),
 ('Marketing');
 
+INSERT INTO EmployeeProjects (EmpID, ProjectID, HoursWorked) VALUES
+(1,1,120),
+(3,1,100),
+(6,1,80),
+(2,2,90),
+(5,4,60);
+
 INSERT INTO Employees (Name, DepartmentID, Salary, ManagerID, HireDate) VALUES
 ('Ali', 1, 80000, NULL, '2020-01-10'),
 ('Sara', 2, 60000, NULL, '2019-03-15'),
@@ -39,46 +46,64 @@ INSERT INTO Employees (Name, DepartmentID, Salary, ManagerID, HireDate) VALUES
 ('Bilal', 3, 88000, 4, '2020-11-11');
 
 
-INSERT INTO Projects (ProjectName, DepartmentID) VALUES
-('Website', 1),
-('Recruitment System', 2),
-('Recruitment System', 2),
-('Recruitment System', 2),
-('Recruitment System', 2),
-('Recruitment System', 2),
-('Recruitment System', 2),
-('Budget Analysis', 3),
-('Budget Analysis', 3),
-('Budget Analysis', 3),
-('Budget Analysis', 3),
-('Budget Analysis', 3),
-('Budget Analysis', 3),
-('Ad Campaign', 4);
-('Ad Campaign', 4);
-('Ad Campaign', 4);
-('Ad Campaign', 4);
-('Ad Campaign', 4);
-('Ad Campaign', 4);
 
 
-
-
+select * from Departments
+select * from EmployeeProjects
+select * from Employees
 
 
 
 -- 1. Find employees whose salary is greater than the average salary of all employees.
 
+select * from Employees
+where Salary >( select AVG(Salary) from Employees)
+
 -- 2. Find employees who earn more than the average salary of their own department.
+select * from Employees
+inner join 
+(select Departments.DepartmentName,Departments.DepartmentID
+,avg(Employees.Salary) as avgSalary from Employees
+inner join Departments
+on Departments.DepartmentID = Employees.DepartmentID
+group by Departments.DepartmentName,Departments.DepartmentID) as avgPerDept
+
+on avgPerDept.DepartmentID = Employees.DepartmentID
+
+where Employees.Salary > avgPerDept.avgSalary
 
 -- 3. List employees who are working on at least one project.
+select * from Employees
+where EmpID in ( select EmpID from EmployeeProjects)
 
 -- 4. List employees who are NOT assigned to any project.
 
+select * from Employees
+where EmpID not in ( select EmpID from EmployeeProjects)
+
 -- 5. Find employees whose salary is greater than employees in HR department.
+
+select * from Employees
+where Salary > all
+(select Employees.salary from Employees
+inner join Departments on 
+Employees.DepartmentID = Departments.DepartmentID
+where Departments.DepartmentName = 'HR') 
+
+
 
 -- 6. Find employees who work in the same department as 'Ali'.
 
+select EmpID ,Name ,DepartmentID  from Employees as e
+where DepartmentID =
+( select DepartmentID from Employees
+where Name ='Ali')
+
+
 -- 7. Display each employee's name along with their department name.
+select Name ,
+(select DepartmentName from Departments as d where d.DepartmentID = e.DepartmentID)
+from Employees as e
 
 -- 8. Find the department(s) that have more than 2 employees.
 
