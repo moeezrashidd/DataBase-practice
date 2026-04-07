@@ -106,17 +106,48 @@ select Name ,
 from Employees as e
 
 -- 8. Find the department(s) that have more than 2 employees.
+select DepartmentName from Departments
+where DepartmentID  in (select DepartmentID  from Employees
+group by DepartmentID
+having Count(DepartmentID) >2)
 
 -- 9. Find employees who are managers.
 
+select Name from Employees
+where ManagerID in (select DISTINCT ManagerID from Employees)
+
 -- 10. Find the second highest salary in the Employees table.
+select Max(Salary) from Employees
+where Salary < ( select Max(Salary) from Employees)
 
 -- 11. Find employees whose salary is equal to the maximum salary in their department.
+select Name from Employees as e
+where Salary =
+(Select Max(Salary) from Employees 
+where e.DepartmentID = Employees.DepartmentID)
+
 
 -- 12. Find the employee(s) who worked the maximum number of hours on any project.
-
+select Name from Employees 
+where EmpID in (
+select EmpID from EmployeeProjects
+where HoursWorked = (select Max(hoursWorked) 
+from EmployeeProjects))
 -- 13. Find departments that do NOT have any employees.
+select DepartmentName from Departments 
+where DepartmentID not in (
+select DepartmentID from Employees)
 
 -- 14. Find employees hired after the most recently hired employee in HR department.
-
+select top 1 Name from Employees 
+where HireDate > 
+( select Max(hireDate) 
+from Employees 
+where DepartmentID = (select DepartmentID 
+from Departments where DepartmentName = 'HR'))
+order by HireDate desc
 -- 15. Find employees who earn more than the average salary of employees who are working on at least one project.
+select Name , Salary from Employees 
+where Salary >
+(select avg(Salary) from Employees
+where EmpID in (Select EmpID from EmployeeProjects))
