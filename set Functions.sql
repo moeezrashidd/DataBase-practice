@@ -64,3 +64,59 @@ INSERT INTO EmployeeProjects VALUES
 (8, 102, 50),
 (9, 104, 95),
 (10, 103, 210);
+
+
+-- Q1: Get all cities where employees exist OR departments exist
+-- (Use UNION)
+
+-- Q2: Get all employee names from IT and HR departments in a single list
+-- (Use UNION)
+
+-- Q3: Show all salaries including duplicates vs removing duplicates
+-- (Compare UNION vs UNION ALL)
+
+
+
+-- Q4: Find employees who worked on project 101 AND project 103
+-- (Use INTERSECT)
+
+-- Q5: Find cities where employees exist AND projects are assigned
+-- (Use INTERSECT on derived sets)
+
+
+
+
+-- Q6: Find employees who exist in Employees table BUT have no project assigned
+-- (Use EXCEPT)
+
+-- Q7: Find departments that exist BUT have no employees
+-- (Use EXCEPT)
+
+
+
+-- Q8: Find employees who worked on project 101 BUT NOT on project 102
+-- (Use INTERSECT + EXCEPT)
+
+-- Q9: Get all employees who are in IT department OR worked more than 100 hours
+-- (Use UNION)
+
+-- Q10: Find employees who worked on at least one project BUT NOT in Marketing department
+
+
+
+
+-- Q11: Find employees who worked on ALL projects
+-- (Hint: Use EXCEPT logic)
+
+-- Q12: Find projects that have employees working on them AND have budget > 150000
+-- (Use INTERSECT)
+
+-- Q13: Return list of IDs that appear in Employees OR EmployeeProjects BUT NOT in both
+-- (Symmetric Difference using UNION, INTERSECT, EXCEPT)
+
+
+
+-- Q14: Find employees who worked on project 101 OR 102 BUT NOT BOTH
+-- (XOR logic using set operators)
+
+-- Q15: Find duplicate salaries using set operators (NOT GROUP BY)
