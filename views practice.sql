@@ -1,12 +1,7 @@
--- SQL Server Views Practice (Questions Only)
--- Use SQL Server Management Studio (SSMS)
 
 CREATE DATABASE ViewPracticeDB;
-GO
 
 USE ViewPracticeDB;
-GO
-
 CREATE TABLE Departments (
     DepartmentID INT PRIMARY KEY,
     DepartmentName VARCHAR(50)
@@ -20,7 +15,7 @@ CREATE TABLE Employees (
     HireDate DATE,
     FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
 );
-GO
+
 
 INSERT INTO Departments VALUES
 (1, 'HR'),
@@ -32,8 +27,7 @@ INSERT INTO Employees VALUES
 (102, 'Sara Ahmed', 70000, 2, '2021-03-10'),
 (103, 'Usman Tariq', 65000, 2, '2020-07-21'),
 (104, 'Hina Malik', 80000, 3, '2019-11-05');
-GO
-
+select * from Departments
 -- Question 1:
 -- Create a view to show EmployeeID, FullName, Salary.
 
